@@ -1,0 +1,468 @@
+---
+title: js排序算法汇总
+date: 2018-11-13 17:27:56
+tags:算法
+---
+
+## js排序算法汇总
+
+排序有内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。
+
+这里用js实现八种内部排序
+
+![排序总图][id1]
+[id1]: https://s1.ax1x.com/2018/11/14/iXIiZR.png  "Optional title attribute"
+
+下面依次介绍八种排序的定义以及js写法：
+
+### 一、插入排序
+
+#### 1.直接插入排序（Straight Inserttion Sort）
+**【基本思想】**：将一个记录插入到已排序好的有序表中，从而得到一个新的有序序列。即：先将序列的第1个记录看成是一个有序的子序列，然后从第2个记录逐个进行插入，直至整个序列有序为止。
+
+**【图示如下】**：
+
+![直接插入排序][id2]
+[id2]: https://s1.ax1x.com/2018/11/14/iXIEi6.png  "Optional title attribute"
+
+**【基本算法思想】**：用两个循环完成
+
+ 第一层循环：遍历待比较的所有数组元素
+
+第二层循环：将本轮选择的元素与已经排好序的元素相比较，插入合适位置
+
+**js代码实现如下**：
+
+    function inserSort(arr){
+       //存储待比较的元素
+    	var temp;
+    	for(var i = 1;i < arr.length;i++){
+    		temp = arr[i];
+    		//寻找插入位置
+    		for(var j = i;j > 0 && arr[j - 1] > temp;j--){
+    			//将大于temp的arr[j]元素后移
+    			arr[j] = arr[j - 1];
+    		}
+    		arr[j] = temp;
+    	}
+    }
+
+
+#### 2.希尔排序（Shell's Sort）
+
+**【基本思想】**：相对直接排序有较大改进，希尔排序又叫缩小增量排序。先将整个待排序的记录序列分割成若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行一次直接插入排序。
+
+**【图示如下】**：
+
+![希尔排序][id3]
+[id3]: https://s1.ax1x.com/2018/11/14/iXIezD.png  "Optional title attribute"
+
+**【基本算法思想】**：用三个循环完成
+
+第一层循环：遍历增量序列
+
+第二、三层循环：即直接插入排序所需要的两层循环，具体描述见上
+
+
+**js代码实现如下**：
+
+     function shellSort(arr){
+      	//设置初始gap
+      	var gap = Math.floor(arr.length/2);
+      	while(gap >= 1){
+      		for(var i = gap;i < arr.length;i++){
+      			//存储待比较的元素
+      			var temp = arr[i];
+      			//按gap对子序列进行排序
+      			for(var j = i - gap;j >= 0 && tem < arr[j];j = j - gap){
+      					arr[j + gap] = arr[j];
+      			}
+      			arr[j + gap] = temp;
+      		}
+      		gap = Math.floor(gap/2);
+      	}
+      }
+
+### 二、选择排序
+
+#### 1.简单选择排序(Simple Selection Sort)
+
+**【基本思想】**：在待排序序列中，找到关键字最小（或最大）的元素，若最小元素不是待排序序列的第一个元素，则将其与第一个元素互换；然后在剩下的元素中再找到最小（或最大）的元素与第2个位置的数交换，依次类推，直到第n-1个元素和第n个元素比较为止。简单来说，就是比较+交换。
+
+**【图示如下】**：
+
+![简单选择排序][id4]
+[id4]: https://s1.ax1x.com/2018/11/14/iXIKLd.png  "Optional title attribute"
+
+**【基本算法思想】**：用两个循环完成
+
+第一层循环：依次遍历序列中的每一个元素
+
+第二层循环：将遍历得到的当前元素依次与剩下的元素进行比较，符合最小元素的条件，则交换
+
+**js代码实现如下**：
+
+     function selectSort(arr){
+       	//记录最小元素的下标
+	    var minIndex;
+	    //第一层循环
+	    for(var i = 0;i < arr.length;i++){
+	       	minIndex = i;
+	       	for(var j = i + 1;j < arr.length;j++){
+	       		//如果出现比minIndex为下标的元素更小的元素，则更改下标，确保最终minIndex是最小元素的下标
+	       		if(arr[minIndex] > arr[j])
+	       				minIndex = j;
+	       	} 
+	       	if(minIndex != i){
+				[arr[i],arr[minIndex]] = [arr[arrIndex],arr[i]];
+	       	}
+	     }
+     }
+
+#### 2.堆排序(Heap Sort)
+
+**【基本思想】**：将待排序序列构造成一个大顶堆（或小顶堆），此时，整个序列的最大值（或最小值）就是堆顶的根节点，将其与末尾元素进行交换，此时末尾元素就成为最大值（或最小值）。然后将剩余的n-1个元素重新构造成一个堆，这样会得到n个元素的次大值（或次小值），如此反复执行，最后得到一个有序序列。
+
+堆是具有以下性质的完全二叉树：每个节点的值都大于或等于其左右孩子节点的值，称为大顶堆;每个节点的值都小于或等于其左右孩子节点的值，称为小顶堆。如下图：
+
+![堆][id5]
+[id5]: https://s1.ax1x.com/2018/11/14/iX5jiV.png  "Optional title attribute"
+
+**【图示如下】**：参考链接[https://www.cnblogs.com/chengxiao/p/6129630.html](https://www.cnblogs.com/chengxiao/p/6129630.html)
+
+**【基本算法思想】**：
+
+a：将无序序列构建成一个堆，根据升序降序需求选择大顶堆或小顶堆
+
+b：将堆顶元素与末尾元素交换，将堆顶元素沉到数组尾端
+
+c：重新调整剩余节点结构，使其继续满足堆定义，然后继续交换堆顶元素和末尾元素，直至成为有序数列。
+
+**js代码实现如下**：
+
+     function heapSort(arr){
+         //构建大顶堆
+         for(var i = arr.length/2 - 1;i >= 0;i--){
+            adjustHeap(arr,i, arr.length);
+          }
+         //调整结构+交换堆顶元素与末尾元素
+         for(var j = arr.length - 1;j > 0;j--){
+            swap(arr,0,j);//将堆顶元素与末尾元素进行交换
+            adjustHeap(arr,0,j);
+          }
+          return arr;
+       }
+     function adjustHeap(arr,i,length){
+         var temp = arr[i];
+         for(var k = i*2+1;k < length;k = k*2+1){             
+            if(k+1 < length && arr[k+1] > arr[k]){
+              k++;
+            }
+            if(arr[k] > temp){
+              arr[i] = arr[k];
+              i = k; 
+            }else{
+              break;
+            }
+          }
+          arr[i] = temp;
+       }
+       function swap(arr,i,j){
+          [arr[i],arr[j]] = [arr[j],arr[i]];
+       }
+
+### 三、交换排序
+
+#### 1.冒泡排序(Bubble Sort)
+
+**【基本思想】**：在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，让较大的数往下沉，较小的数往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。
+
+
+**【图示如下】**：
+
+![冒泡排序][id6]
+[id6]: https://s1.ax1x.com/2018/11/14/iXIpM4.png  "Optional title attribute"
+
+**【基本算法思想】**：N个数要排序完成，总共进行N-1趟排序，每i趟排序次数为(N-i)次，所以用双重循环。
+
+
+第一层循环：表示循环多少趟
+
+第二层循环：每一趟的循环次数
+
+**js代码实现如下**：
+
+    function bubbleSort(arr){
+        for(var i = 0;i < arr.length - 1;i++){
+          for(var j = 0;j < arr.length - 1 - i;j++){
+              if(arr[j] > arr[j+1]){
+                 var temp = arr[j];
+                 arr[j] = arr[j+1];
+                 arr[j+1] = temp;
+              }
+          }
+        }
+        return arr;
+     }
+
+
+#### 2.快速排序(Quick Sort)
+
+##### 2.1 容易理解的快速排序实现方法
+
+**【基本思想】**：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
+
+**【图示如下】**：参考链接[http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html](http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html)
+
+这种方法是当前最多见的快速排序方法，容易理解，但有一定的缺点（后文会给出第二种）
+
+**【基本算法思想】**：整个过程只需要三步
+
+（1）在数据集之中，选择一个元素作为“基准”
+
+（2）所有小于“基准”的元素，都移到“基准”的左边；所有大于“基准”的元素，都移到“基准”的右边
+
+（3）对“基准”左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止
+
+**js代码实现如下**：
+
+    function quickSort(arr){
+        if(arr.length <= 1){
+            return arr;
+          }
+        var index = Math.floor(arr.length/2);
+        var temp = arr.splice(index,1)[0];
+        var left = [];
+        var right = [];
+        for(var i = 0;i < arr.length;i++){
+            if(arr[i] < temp){
+              left.push(arr[i]);
+            }else{
+              right.push(arr[i]);
+            }
+          }
+          return quickSort(left).concat([temp],quickSort(right));
+       }
+
+##### 2.2 第二种快速排序实现方法
+
+2.1节的快速排序算法非常容易理解，但是splice()方法以及两个临时数组导致时间复杂度和空间复杂度都增加了，所以，在这节给出第二种，稍微难理解一点但也是比较标准的快排方法。
+
+**js代码实现如下**：
+
+    function quickSort(array) {
+        return quick(array, 0, array.length - 1);
+    };
+    function quick(array, left, right) {
+        let index;
+        if (array.length > 1) {
+      		index = partition(array, left, right);
+     		if (left < index - 1) {
+        		quick(array, left, index - 1);
+      		}
+     		if (index < right) {
+        		quick(array, index, right);
+     	 	}
+   		}
+    	return array;
+    }
+	function partition(array, left, right) {
+    // 用index取中间值而非splice
+    	const pivot = array[Math.floor((right + left) / 2)];
+    	let i = left;
+   	 	let j = right;
+    	while (i <= j) {
+      		while (compare(array[i], pivot) === -1) {
+       			 i++;
+     		 }
+      		while (compare(array[j], pivot) === 1) {
+        		j--;
+      		}
+      		if (i <= j) {
+        		swap(array, i, j);
+        		i++;
+        		j--;
+      		}
+   		 }
+    	return i;
+  	}
+	function compare(a, b) {
+    	if (a === b) {
+     	 	return 0;
+    	}
+    	return a < b ? -1 : 1;
+  	}
+	function swap(arr,i,j){
+		[arr[i],arr[j]] = [arr[j],arr[i]];
+	}
+
+### 四、归并排序(Merge Sort)
+
+**【基本思想】**：归并(Merge)排序法是将两个（或两个以上）有序表合并成一个新的有序表，即把待排序序列分为若干个子序列，每个子序列是有序的。然后再把有序子序列合并为整体有序序列。
+
+**【图示如下】**：
+
+![归并排序][id7]
+[id7]: https://s1.ax1x.com/2018/11/14/iX5qZn.png  "Optional title attribute"
+
+**js代码实现如下**：
+
+    function mergeSort(arr){
+        if(arr.length <= 1){
+            return arr;
+         }
+         var mid = arr.length/2;
+         var left = arr.slice(0,mid);
+         var right = arr.slice(mid);
+         return merge(mergeSort(left),mergeSort(right));
+      }
+    function merge(left,right){
+        var temp = [];
+        while(left.length && right.length){
+            if(left[0] < right[0]){
+                temp.push(left.shift());
+            }else{
+                temp.push(right.shift());
+            }
+          }
+          return temp.concat(left,right);
+      }
+
+以上为归并排序的递归写法，这种写法会频繁的自我调用，一个长度为n的数组会调用mergeSort() 2*n-1次，这意味着如果需要排序的数组长度很大，会在某些栈小的浏览器上发生栈溢出错误。
+
+可将递归修改为迭代，算法如下：
+
+**js代码实现如下**：
+
+     function mergeSort(arr){
+         if(arr.length <= 1){
+            return arr;
+          }
+         var work = [];
+         for(var i = 0,len = arr.length;i < len;i++){
+            work.push([arr[i]]);
+          }
+         work.push([ ]);  //如果数组长度为奇数
+         for(var lim = len;lim >1;lim = (lim+1)/2){
+            for(var j = 0,k = 0;k < lim;j++,k += 2){
+              	work[j] = merge(work[k],work[k+1]);
+            }
+            work[j] = [ ]; //如果数组长度为奇数
+          }
+          return work[0];
+       }
+     function merge(left,right){
+         var result = [];
+         while(left.length && right.length){
+            if(left[0] < right[0]){
+              	result.push(left.shift());
+            }else{
+             	result.push(right.shift());
+            }
+          }
+         return result.concat(left,right);
+       }
+
+### 五、基数排序
+
+#### 1.桶排序
+
+在说基数排序之前，先了解一下桶排序：
+
+**【基本思想】**：将数据集分配到有限的桶子里，每个桶再分别排序（有可能仍然是桶排序，也可能是其他排序算法）。
+
+桶排序利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。
+
+为了使桶排序更加高效，需要做到以下两点：
+
+    1）在额外空间充足的情况下，尽量增大桶的数量
+    2）使用的映射函数能够将输入的N个数据均匀的分配到K个桶中
+
+**js代码实现如下**：
+
+     function bucketSort(arr,bucketSize){
+      	 if(arr.length <= 1){
+       		 return arr;
+      	  }
+      	 var minValue = arr[0];
+      	 var maxValue = arr[1];
+      	 for(var i = 1;i < arr.length;i++){
+        	if(arr[i] < minValue){
+          		minValue = arr[i];
+        	}else{
+          		maxValue = arr[i];
+       	 	}
+      	 }
+
+	     //桶的初始化
+      	 var DEFAULT_BUCKET_SIZE = 5;
+      	 bucketSize = bucketSize || DEFAULT_BUCKET_SIZE;
+      	 var bucketCount = Math.floor((maxValue - minValue)/bucketSize) + 1;
+      	 var buckets = new Array(bucketCount);
+      	 for(var i = 0;i < buckets.length;i++){
+        	buckers[i] = [];
+      	 }
+
+         //利用映射函数将数据分配到各个桶中
+     	 for(var i = 0;i < arr.length;i++){
+       		 buckets[Math.floor((arr[i] - minValue)/bucketSize)].push(arr[i]);
+      	 }
+      	 arr.length = 0;
+         for(var i = 0;i < buckets.length;i++){
+        	insertSort(buckets[i]);   //对每个桶进行排序，这里拟使用插入排序
+            for(var j = 0;j < buckets[i].length;j++){
+         		arr.push(buckets[i][j]);
+        	}
+      	}
+     	 return arr;
+    }
+
+#### 2.基数排序(Radix Sort)
+
+**【基本思想】**：基数排序就是进行多次的桶排序，通过“分配”和“收集”过程来实现排序。
+
+基数排序有两种方法：
+
+    1）MSD  从高位开始进行排序
+    2）LSD  从低位开始进行排序
+
+**js代码实现如下**：
+
+    function radixSort(arr,maxDigit){
+      	var count = [];
+     	var mod = 10;
+      	var dev = 1;
+      	for(var i = 0;i < maxDigit;i++,dev *= 10,mod *= 10){
+        	for(var j = 0;j < arr.length;j++){
+          		var bucket = parseInt((arr[j] % mod)/dev);
+          		if(count[bucket] == null){
+            		count[bucket] = [];
+          		}
+          		count[bucket].push(arr[j]);
+       		 }
+       		var pos = 0;
+        	for(var j = 0;j < count.length;j++){
+          		var value = null;
+          		if(count[j] != null){
+            		while((value = count[j].shift()) != null){
+              			arr[pos++] = value;
+            		}
+          		}
+        	}
+      }
+      return arr;
+    }
+### 时间复杂度和稳定性
+  
+排序算法|平均情况 | 最好情况 | 最坏情况 | 空间复杂度 | 稳定性   
+:-: | :-: | :-: | :-: | :-: | :-: 
+直接插入 | O(n<sup>2</sup>) | O(n) | O(n<sup>2</sup>) | O(1)| 稳定 
+希尔 | O(n<sup>1.3</sup>)| O(n) | O(n<sup>2</sup>) | O(1)| 不稳定   
+简单选择 | O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(1) | 不稳定   
+堆排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(1) | 不稳定
+冒泡排序 | O(n<sup>2</sup>) | O(n) | O(n<sup>2</sup>) | O(1) | 稳定   
+快速排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(n<sup>2</sup>) | O(nlog<sub>2</sub>n) | 不稳定   
+归并排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(n) | 稳定   
+基数排序 | O(d(r+n)) | O(d(n+rd)) | O(d(r+n)) | O(rd+n) | 稳定
+
+    
