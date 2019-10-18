@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,面试,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="从3月初开始投实习简历，4月份确定实习，5月开始实习，到现在7月都快结束了，虽然每次都记录面试题，但还没有对春招面试做个总结，再不整理一下面试题，就要忘了。 面试的具体顺序记不清了，但也相差不大，而且顺序不重要。 小米1、arguments对象，如何把伪数组转为数组； 2、数组操作，其中改变数组本身的有哪些，以及不改变的有哪些； 3、数组的filter()、map()、forEach()区别； 4">
+<meta name="keywords" content="前端,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019春招面试题汇总">
+<meta property="og:url" content="https://lkycanadream.github.io/2019/07/21/2019春招面试题汇总/index.html">
+<meta property="og:site_name" content="L_ky">
+<meta property="og:description" content="从3月初开始投实习简历，4月份确定实习，5月开始实习，到现在7月都快结束了，虽然每次都记录面试题，但还没有对春招面试做个总结，再不整理一下面试题，就要忘了。 面试的具体顺序记不清了，但也相差不大，而且顺序不重要。 小米1、arguments对象，如何把伪数组转为数组； 2、数组操作，其中改变数组本身的有哪些，以及不改变的有哪些； 3、数组的filter()、map()、forEach()区别； 4">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-18T07:10:34.079Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019春招面试题汇总">
+<meta name="twitter:description" content="从3月初开始投实习简历，4月份确定实习，5月开始实习，到现在7月都快结束了，虽然每次都记录面试题，但还没有对春招面试做个总结，再不整理一下面试题，就要忘了。 面试的具体顺序记不清了，但也相差不大，而且顺序不重要。 小米1、arguments对象，如何把伪数组转为数组； 2、数组操作，其中改变数组本身的有哪些，以及不改变的有哪些； 3、数组的filter()、map()、forEach()区别； 4">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lkycanadream.github.io/2019/07/21/2019春招面试题汇总/">
+
+
+
+
+
+  <title>2019春招面试题汇总 | L_ky</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">L_ky</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Li Kaiyue'Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lkycanadream.github.io/2019/07/21/2019春招面试题汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lky">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="L_ky">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2019春招面试题汇总</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T14:31:48+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>从3月初开始投实习简历，4月份确定实习，5月开始实习，到现在7月都快结束了，虽然每次都记录面试题，但还没有对春招面试做个总结，再不整理一下面试题，就要忘了。</p>
+<p>面试的具体顺序记不清了，但也相差不大，而且顺序不重要。</p>
+<h3 id="小米"><a href="#小米" class="headerlink" title="小米"></a>小米</h3><p>1、arguments对象，如何把伪数组转为数组；</p>
+<p>2、数组操作，其中改变数组本身的有哪些，以及不改变的有哪些；</p>
+<p>3、数组的filter()、map()、forEach()区别；</p>
+<p>4、宏任务、微任务；Promise、setTimeout执行顺序；</p>
+<p>5、this指向，setTimeout的this指向；</p>
+<p>6、箭头函数与普通函数区别；箭头函数的使用场景；</p>
+<p>7、arr = [{age:13},{name:2},{job:6},……]排序；</p>
+<p>8、跨域怎么处理，CORS；</p>
+<p>9、get和post区别</p>
+<p>10、post可以传送的数据类型，content-type可以是什么；file怎么传；</p>
+<p>11、为什么会出现cookie和session？——http无状态</p>
+<p>12、http状态码，304表示什么，说一些强制缓存和协商缓存；</p>
+<p>13、Vue的v-if和v-show区别；</p>
+<p>14、垂直居中问题；</p>
+<p>15、flex布局；</p>
+<p>16、h5页面如何联调；</p>
+<p>17、如何清除浮动；</p>
+<p>18、原型、冒泡，addEventListener第三个参数，阻止默认事件，阻止冒泡；</p>
+<p>19、扩展运算符；</p>
+<p>20、同源策略；</p>
+<p>21、数据类型，基本类型和引用类型的区别；</p>
+<p>22、ES6特性知道哪些；</p>
+<p>23、什么可以改变this指向，call、apply、bind区别；</p>
+<h3 id="旷视"><a href="#旷视" class="headerlink" title="旷视"></a>旷视</h3><p>1、问研究生期间的研究方向；</p>
+<p>2、场景问题：比如我有一个数组，包含n个元素，我要进行滑动窗口找最大值，窗口大小为k，实现一个函数Q，返回窗口内最大值，注意：每滑动一次都要调用一次Q，如何在最小复杂度情况下实现Q；(BST)</p>
+<p>3、滚动加载如何实现，出现用户疯狂上下滚动怎么办；</p>
+<h3 id="作业帮"><a href="#作业帮" class="headerlink" title="作业帮"></a>作业帮</h3><p>1、flex兼容性；</p>
+<p>2、css选择器权重问题；</p>
+<p>3、options请求，该请求的作用，服务端如何响应options请求；</p>
+<p>4、跨域访问cookie如何实现；(cookie放到根域)</p>
+<p>5、垂直水平居中的各种方法及其优缺点；</p>
+<p>6、正则实现去除字符串首尾空格；</p>
+<p>7、setTimeout和Promise执行顺序，宏任务，微任务，$.nextTick；</p>
+<p>8、踩过哪些坑</p>
+<p>9、Vue源码看过吗；</p>
+<p>10、跨域解决方法；</p>
+<p>11、tcp、udp区别；</p>
+<p>12、tcp如何实现可靠通信；</p>
+<p>13、http3协议了解吗；</p>
+<p>14、跨域设在浏览器端还是服务器端；</p>
+<p>15、XSS；</p>
+<h3 id="完美世界"><a href="#完美世界" class="headerlink" title="完美世界"></a>完美世界</h3><p>1、块级元素、行级元素，举例子，说区别；</p>
+<p>2、行级元素都不能指定宽高吗？有没有特殊的；</p>
+<p>3、浮动以及清除浮动；</p>
+<p>4、说一下js的面向对象，说一下继承方法；</p>
+<p>5、写一个原生ajax；</p>
+<p>6、call能继承原型链上的方法属性吗；</p>
+<p>7、知道哪些状态码；</p>
+<p>8、跨域解决方法，jsonp原理，CORS；</p>
+<p>9、Promise有几种状态，有几种事件过程；</p>
+<p>10、写一个求数据类型的函数；</p>
+<p>11、h5标签有哪些；</p>
+<p>12、canvas用来做什么；</p>
+<p>13、用set实现数组去重；</p>
+<p>14、position取值除了static、relative、absolute、fixed还有什么其他取值；</p>
+<p>15、强制缓存、协商缓存；</p>
+<h3 id="美国道富"><a href="#美国道富" class="headerlink" title="美国道富"></a>美国道富</h3><p>1、平时主要是函数编程还是面向对象编程；</p>
+<p>2、了解CSS动画吗；如果有一个列表，不知道他的具体高度，但是想用transition实现这个列表的收缩，怎么办；</p>
+<p>3、前端渲染和后端渲染的优缺点；</p>
+<p>4、h5新特性了解哪些；</p>
+<p>5、三列布局有哪些实现方法；flex如何实现三列布局；</p>
+<p>6、清除浮动的方法；</p>
+<p>7、水平居中、垂直居中；</p>
+<p>8、对class的新提案有什么看法；</p>
+<p>9、options请求有没有优化方法；</p>
+<p>10、Vue项目或平时项目中，命名规律是什么；</p>
+<p>11、Vue周边比如vue-x了解过吗；</p>
+<p>12、子容器加了margin，超出了父容器，解决方法；</p>
+<p>13、为什么会有跨域问题，如何解决跨域问题；</p>
+<p>14、箭头函数使用场景，与普通函数区别；</p>
+<p>15、map和set了解吗，map和object区别；</p>
+<p>16、设计模式了解哪些，工厂模式和构造函数创建对象区别；</p>
+<p>17、XSS和CSRF如何防御；</p>
+<p>18、cookie和session区别；</p>
+<p>19、token了解吗？token放到前端什么位置；</p>
+<p>20、ajax长轮询问，webSocket和SSE说一下；</p>
+<p>21、ajax长轮询短轮询区别；</p>
+<p>22、简单请求和非简单请求；</p>
+<p>23、css选择器优先级说一下；</p>
+<h3 id="蘑菇街"><a href="#蘑菇街" class="headerlink" title="蘑菇街"></a>蘑菇街</h3><p>1、项目中遇到的问题，如何解决的；</p>
+<p>2、fastclick原理，如何解决点击延迟的；</p>
+<p>3、如何实现无限滚动；</p>
+<p>4、无限滚动造成的DOM过多，页面卡顿，如何解决；</p>
+<p>5、轮播图实现思路；</p>
+<p>6、说一下自己实现过的小组件；</p>
+<p>7、如果下拉列表在下拉时还想触发其他动画效果，如何实现；</p>
+<p>8、垂直居中实现；</p>
+<p>9、如何绑定事件，如果用addEventListener，是在什么阶段触发；如果想在页面渲染前就写好这个事件，怎么办；</p>
+<p>10、事件流有几个阶段，如果我给一个节点，绑定两个事件，会触发几次；</p>
+<p>11、CSRF说一下，如何防范；</p>
+<h3 id="阿里"><a href="#阿里" class="headerlink" title="阿里"></a>阿里</h3><p>1、怎么接触的前端，怎么学的；</p>
+<p>2、说一个http请求过程；</p>
+<p>3、说一下浏览器得到数据后的渲染过程；为什么js要放在body底部，为什么js会阻塞DOM解析呢；</p>
+<p>4、强制缓存、协商缓存；</p>
+<p>5、我要实现一个功能：数组的操作，如pop()、push()、……，都会触发一个自定义事件，怎么实现；</p>
+<p>6、说一下js作用域，链式作用域；</p>
+<p>7、闭包说一下；</p>
+<p>8、跨域时，服务端的Access-Control-Allow-Origin，能设置接收某些域名吗？即白名单的存在；</p>
+<p>9、Dom操作，如何得到这个页面的所有文本框；如果有些文本框不是我要的，比如input，它可能不用作文本框，用作按钮，但只想要作为文本框的input，怎么做；</p>
+<p>10、三列布局，两边定宽，中间自适应；</p>
+<h3 id="腾讯"><a href="#腾讯" class="headerlink" title="腾讯"></a>腾讯</h3><p>1、深拷贝方法，json方式缺点；</p>
+<p>2、如何判断一个变量是对象还是数组；除了用Object.prototype.toString.call()，还可以用什么；(constructor)；</p>
+<p>3、echarts用的svg还是canvas；</p>
+<p>4、缓存头/强制缓存/协商缓存，流程；</p>
+<p>5、数据结构的几个排序，希尔排序的复杂度；</p>
+<p>6、平衡树的概念，实际用处；</p>
+<p>7、树的遍历方法；</p>
+<p>8、webpack了解吗；</p>
+<p>9、OSI七层模型，Http位于哪一层，tcp和udp区别；</p>
+<p>10、tcp三次握手，四次挥手；</p>
+<p>11、输入域名到展示的网络过程；</p>
+<p>12、如何调试代码，Google控制台经常用什么，perform了解吗；</p>
+<p>13、谈项目；</p>
+<p>14、进程间通信；</p>
+<p>15、Tcp如何实现可靠传输；</p>
+<p>16、30位子网掩码能分配多少IP地址；</p>
+<p>17、垃圾回收机制；</p>
+<p>18、如何知道某个方法或属性是实例自己的，而不是原型上的；</p>
+<p>19、原型上有个可遍历的对象是什么，怎么表示；</p>
+<h3 id="快手"><a href="#快手" class="headerlink" title="快手"></a>快手</h3><p>1、原型链了解吗？原型链的顶端是什么？我们如何判断原型到顶了；</p>
+<p>2、Function.prototype = ?</p>
+<p>3、console.log(typeof Object)；</p>
+<p>4、instanceof原理，自己实现的话怎么实现；</p>
+<p>5、css实现三角形；</p>
+<p>6、css实现圆形，border-radius怎么设置，它的百分比是相对于什么来说的；</p>
+<p>7、Vue双向绑定原理，为什么要双向绑定；</p>
+<p>8、宏任务、微任务执行过程有什么区别；</p>
+<p>9、变量提升是什么；var、let区别是什么，暂时性死区是什么；</p>
+<p>10、说一下hadoop的map和reduce；如果我的数据对分片敏感，怎么解决；</p>
+<p>11、实现bind；</p>
+<p>12、一个题：<code></code></p>
+<pre><code>var a = {x:1};
+var b = a;
+a.x = a = {y:1};
+console.log(a);
+console.log(b); 
+</code></pre><p>  </p>
+<p>13、ajax的reayState有几种状态；</p>
+<h3 id="头条"><a href="#头条" class="headerlink" title="头条"></a>头条</h3><p>1、js实现继承</p>
+<p>2、实现bind</p>
+<p>3、给一段代码，判断执行顺序；(主要是Promise和setTimeout)</p>
+<p>4、浏览器的渲染机制、重排和重绘；</p>
+<p>5、实现两列布局，所有方法；</p>
+<p>6、实现一个正方形，宽度100%，高度等于宽度；</p>
+<p>7、了解物理像素和逻辑像素吗，怎么做到保证物理像素一致，写一个控制1px物理像素的横线；</p>
+<p>8、节流防抖，适用场景，实现；</p>
+<p>9、实现一个函数，分别满足sum(2)(3)和sum(2,3)都输出5；</p>
+<p>10、数组去重，ES6不支持怎么办；babel转义用过吗；</p>
+<p>11、用CSS3动画实现秒针运动，60秒转一圈，循环转动；</p>
+<p>12、实现一个Vue的弹窗组件；</p>
+<p>13、Vue生命周期、双向绑定；</p>
+<p>14、XSS如何实现输入过滤，写一个正则；</p>
+<p>15、打乱数组；</p>
+<p>16、setTimeout的返回值；</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/28/Webpack是答案吗/" rel="next" title="Webpack是答案吗">
+                <i class="fa fa-chevron-left"></i> Webpack是答案吗
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/18/hello-world/" rel="prev" title="我想我不能再拖延了">
+                我想我不能再拖延了 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.png" alt="Lky">
+            
+              <p class="site-author-name" itemprop="name">Lky</p>
+              <p class="site-description motion-element" itemprop="description">生命不息，奋斗不止，哈哈</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LkyCanadream" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3892202817" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小米"><span class="nav-number">1.</span> <span class="nav-text">小米</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旷视"><span class="nav-number">2.</span> <span class="nav-text">旷视</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业帮"><span class="nav-number">3.</span> <span class="nav-text">作业帮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完美世界"><span class="nav-number">4.</span> <span class="nav-text">完美世界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#美国道富"><span class="nav-number">5.</span> <span class="nav-text">美国道富</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蘑菇街"><span class="nav-number">6.</span> <span class="nav-text">蘑菇街</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阿里"><span class="nav-number">7.</span> <span class="nav-text">阿里</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#腾讯"><span class="nav-number">8.</span> <span class="nav-text">腾讯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快手"><span class="nav-number">9.</span> <span class="nav-text">快手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#头条"><span class="nav-number">10.</span> <span class="nav-text">头条</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-angellist"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lky</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<script type="text/javascript" src="/js/src/love.js"></script>
+</html>
